@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { equipmentLatestState, state } from './equipment.model';
 import { forkJoin, map, of, switchMap } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EquipmentService {
 
-  private apiUrl = 'http://localhost:3000/';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
