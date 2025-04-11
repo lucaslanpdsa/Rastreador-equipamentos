@@ -35,7 +35,6 @@ export class MapViewComponent implements AfterViewInit {
   private adicionarMaquinas(): void {
     this.EquipmentService.getEquipmentData().subscribe((maquinas: any) => {
       maquinas.forEach((maquina: any) => {
-        console.log(maquina)
         let iconUrl = 'https://cdn-icons-png.flaticon.com/128/870/870130.png';
         if (maquina.equipmentModelName == "Caminhão de carga") {
           iconUrl = 'https://cdn-icons-png.flaticon.com/128/870/870130.png'
@@ -57,7 +56,7 @@ export class MapViewComponent implements AfterViewInit {
 
         const popup = L.popup().setContent(
           `Status do equipamento: ${maquina.equipmentState?.name} <br>
-           Nome: ${maquina.name}`
+           Nome: ${maquina.equipmentModelName}`
         );
 
         marker.on('mouseover', () => {

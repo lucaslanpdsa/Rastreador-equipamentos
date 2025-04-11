@@ -40,9 +40,9 @@ export class EquipmentService {
     );
   }
 
-  getEquipmentModel(equipmentId: string) {
+  getEquipmentModel(equipmentModelId: string) {
     return this.http.get<any>(`${this.apiUrl}equipmentModel`).pipe(
-      map(item => item.filter((item: any) => item.id == equipmentId)),
+      map(item => item.filter((item: any) => item.id == equipmentModelId)),
       map(item => item[0].name)
     );
   }
