@@ -1,6 +1,7 @@
 export interface equipmentData {
+  equipmentPosition: position | null;
+  equipmentId: string,
   equipmentModel: string;
-  equipmentPosition: position;
   equipmentState: state | null;
   equipmentType: string;
 }

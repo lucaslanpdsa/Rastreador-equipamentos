@@ -39,7 +39,7 @@ export class MapViewComponent implements AfterViewInit {
         };
         const iconUrl = iconMap[equipment.equipmentType] || 'https://cdn-icons-png.flaticon.com/128/870/870130.png';
 
-        const marker = L.marker([equipment.equipmentPosition.lat, equipment.equipmentPosition.lon], {
+        const marker = L.marker([equipment!.equipmentPosition!.lat, equipment!.equipmentPosition!.lon], {
           icon: L.icon({
             iconUrl: iconUrl,
             iconSize: [40, 40],

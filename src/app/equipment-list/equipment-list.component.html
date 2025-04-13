@@ -8,7 +8,7 @@
         <span><strong>Modelo:</strong> {{ equipment.equipmentModel }}</span>
         <span><strong>Status:</strong> {{ equipment.equipmentState?.name }}</span>
       </div>
-      <button class="history-button">
+      <button class="history-button" (click)="openModal(equipment.equipmentId, equipment.equipmentModel)">
         <span class="icon">📜</span> Ver histórico
       </button>
     </div>

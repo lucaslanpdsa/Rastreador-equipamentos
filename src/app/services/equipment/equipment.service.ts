@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { equipment, equipmentData, equipmentModel, equipmentPositionHistory, equipmentStateHistory, position, state } from './equipment.model';
-import { forkJoin, map, Observable, of, switchMap } from 'rxjs';
+import { catchError, forkJoin, map, Observable, of, shareReplay, switchMap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -10,9 +10,9 @@ import { environment } from '../../../environments/environment';
 export class EquipmentService {
 
   private apiUrl = environment.apiUrl;
+  private positionCache = new Map<string, Observable<position | null>>();
 
   constructor(private http: HttpClient) { }
-
 
   getEquipmentData(): Observable<equipmentData[]> {
     return this.getEquipments().pipe(
@@ -27,7 +27,8 @@ export class EquipmentService {
               equipmentPosition,
               equipmentState,
               equipmentType,
-              equipmentModel: equipment.name
+              equipmentModel: equipment.name,
+              equipmentId: equipment.id
             }))
           )
         );
@@ -51,11 +52,17 @@ export class EquipmentService {
     );
   }
 
-  getEquipmentLatestPosition(equipmentId: string): Observable<position> {
-    return this.http.get<equipmentPositionHistory[]>(`${this.apiUrl}equipmentPositionHistory`).pipe(
-      map(equipmentPositionHistory => equipmentPositionHistory.filter(equipmentPositionHistory => equipmentPositionHistory.equipmentId === equipmentId)),
-      map(equipmentPositionHistory => equipmentPositionHistory[0].positions[equipmentPositionHistory[0].positions.length - 1])
-    );
+  getEquipmentLatestPosition(equipmentId: string): Observable<position | null> {
+    if (!this.positionCache.has(equipmentId)) {
+      const request$ = this.http.get<equipmentPositionHistory[]>(`${this.apiUrl}equipmentPositionHistory`).pipe(
+        map(histories => histories.find(h => h.equipmentId === equipmentId)),
+        map(history => history?.positions?.[history.positions.length - 1] || null),
+        catchError(() => of(null)),
+        shareReplay(1)
+      );
+      this.positionCache.set(equipmentId, request$);
+    }
+    return this.positionCache.get(equipmentId)!;
   }
 
   getEquipmentLatestState(equipmentId: string): Observable<state | null> {
@@ -70,10 +77,18 @@ export class EquipmentService {
     );
   }
 
+  getStateHistory(equipmentId: string): Observable<equipmentStateHistory> {
+    return this.http.get<equipmentStateHistory[]>(`${this.apiUrl}equipmentStateHistory`).pipe(
+      map(StateHistory => StateHistory.filter(item => item.equipmentId === equipmentId)),
+      map(StateHistory => StateHistory[0])
+    );
+  }
+
   getState(stateId: string): Observable<state> {
     return this.http.get<state[]>(`${this.apiUrl}equipmentState`).pipe(
       map(state => state.filter(state => state.id == stateId)),
       map(state => state[0])
     );
   }
+
 }
