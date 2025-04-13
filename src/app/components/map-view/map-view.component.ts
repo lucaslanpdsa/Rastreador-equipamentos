@@ -31,16 +31,13 @@ export class MapViewComponent implements AfterViewInit {
   private addEquipments(): void {
     this.equipmentService.getEquipmentData().subscribe((equipments: equipmentData[]) => {
       equipments.forEach((equipment: equipmentData) => {
-        let iconUrl = 'https://cdn-icons-png.flaticon.com/128/870/870130.png';
-        if (equipment.equipmentType == "Caminhão de carga") {
-          iconUrl = 'https://cdn-icons-png.flaticon.com/128/870/870130.png'
-        }
-        if (equipment.equipmentType == "Harvester") {
-          iconUrl = 'https://cdn-icons-png.flaticon.com/128/1230/1230884.png'
-        }
-        if (equipment.equipmentType == "Garra traçadora") {
-          iconUrl = 'https://cdn-icons-png.flaticon.com/128/18285/18285705.png'
-        }
+
+        const iconMap: Record<string, string> = {
+          'Caminhão de carga': 'https://cdn-icons-png.flaticon.com/128/870/870130.png',
+          'Harvester': 'https://cdn-icons-png.flaticon.com/128/1230/1230884.png',
+          'Garra traçadora': 'https://cdn-icons-png.flaticon.com/128/18285/18285705.png'
+        };
+        const iconUrl = iconMap[equipment.equipmentType] || 'https://cdn-icons-png.flaticon.com/128/870/870130.png';
 
         const marker = L.marker([equipment.equipmentPosition.lat, equipment.equipmentPosition.lon], {
           icon: L.icon({
