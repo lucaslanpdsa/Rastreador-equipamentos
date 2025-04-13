@@ -1,0 +1,16 @@
+<div class="equipment-container">
+  <h2 class="equipment-title">Lista de Equipamentos</h2>
+
+  <div *ngIf="equipmentList$ | async as equipmentList" class="equipment-list">
+    <div *ngFor="let equipment of equipmentList" class="equipment-item">
+      <div class="equipment-info">
+        <span class="equipment-type">{{ equipment.equipmentType }}</span>
+        <span><strong>Modelo:</strong> {{ equipment.equipmentModel }}</span>
+        <span><strong>Status:</strong> {{ equipment.equipmentState?.name }}</span>
+      </div>
+      <button class="history-button">
+        <span class="icon">📜</span> Ver histórico
+      </button>
+    </div>
+  </div>
+</div>

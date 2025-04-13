@@ -1,0 +1,21 @@
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.list-panel {
+  min-width: 400px;
+  max-width: 40%;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 24px;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.map-panel {
+  flex: 1;
+  height: 100%;
+}
