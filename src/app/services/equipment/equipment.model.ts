@@ -1,9 +1,14 @@
-import { Observable } from "rxjs";
+export interface equipmentData {
+  equipmentModel: string;
+  equipmentPosition: position;
+  equipmentState: state | null;
+  equipmentType: string;
+}
 
 export interface equipment {
-  equipmentId: string,
-  LatestPosition: position,
-  state: (Observable<state[]> | undefined)[],
+  id: string,
+  equipmentModelId: string,
+  name: string,
 }
 
 export interface equipmentPositionHistory {
@@ -17,20 +22,29 @@ export interface position {
   lon: number,
 }
 
-export interface equipmentLatestState {
-  positions: position[],
+export interface equipmentStateHistory {
   equipmentId: string,
-  id: string,
-  states: equipmentstate[],
+  states: stateHistory[],
 }
 
-export interface equipmentstate {
+export interface stateHistory {
   date: string,
   equipmentStateId: string,
 }
 
 export interface state {
+  color: string,
   id: string,
   name: string,
-  color: string,
+}
+
+export interface equipmentModel {
+  hourlyEarnings: hourlyEarnings[],
+  id: string,
+  name: string,
+}
+
+interface hourlyEarnings {
+  equipmentStateId: string,
+  value: number,
 }
