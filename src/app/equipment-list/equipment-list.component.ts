@@ -51,8 +51,8 @@ export class EquipmentListComponent {
               display: inline-block;
             "></span>
             <div>
-              <div><strong>Status:</strong> ${new Date(state.date).toLocaleString('pt-BR')}</div>
-              <div><strong>Data:</strong> ${stateInfo['name']}</div>
+              <div><strong>Data:</strong> ${new Date(state.date).toLocaleString('pt-BR')}</div>
+              <div><strong>Estado:</strong> ${stateInfo['name']}</div>
             </div>
           </li>
         `;
@@ -63,8 +63,7 @@ export class EquipmentListComponent {
           html: `<div style="text-align: left; max-height: 400px; overflow-y: auto;">${stateHistoryHtml}</div>`,
           showCloseButton: true,
           showCancelButton: true,
-          confirmButtonText: 'Fechar',
-          cancelButtonText: 'Cancelar',
+          cancelButtonText: 'Fechar',
           width: '50%',
           customClass: {
             popup: 'modal-content',
