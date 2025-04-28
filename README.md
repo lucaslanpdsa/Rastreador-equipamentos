@@ -1,59 +1,31 @@
-# TesteLucasAlves
+<h1 align="center">Equipment Tracker Map</h1> <p align="center"> Aplicação web para monitoramento de localização e status de equipamentos em tempo real. </p> <p align="center"> <a target="_blank href="https://teste-frontend-v4-git-teste-lucas-alves-lucaslanpdsas-projects.vercel.app/"> <img src="https://img.shields.io/badge/Acessar%20Projeto-Vercel-000?style=for-the-badge&logo=vercel" alt="Ver Projeto na Vercel"> </a> </p> <br>
+📋 Descrição
+Este projeto permite:
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+Posicionar máquinas em um mapa interativo.
 
-## Development server
+Visualizar o status atual de cada máquina: Operando, Parado ou Em manutenção.
 
-To start a local development server, run:
+Consultar o histórico de status de cada equipamento, com registros de data e hora.
 
-```bash
-ng serve
-```
+🚀 Tecnologias utilizadas
+Angular + TypeScript
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+API de Mapas (Leaflet com OpenStreetMap)
 
-## Code scaffolding
+JSON Server (para simular uma API)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+⚙️ Funcionalidades
+Exibição de equipamentos com localização geográfica.
 
-```bash
-ng generate component component-name
-```
+Atualização em tempo real dos status dos equipamentos.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Histórico detalhado dos estados de operação.
 
-```bash
-ng generate --help
-```
+Interface intuitiva para visualização dos dados no mapa.
 
-## Building
+🔗 Link para acessar o projeto
+👉 Acesse o projeto aqui
 
-To build the project run:
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
