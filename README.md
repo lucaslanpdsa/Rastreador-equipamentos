@@ -1,5 +1,5 @@
 ## Aplicação web para monitoramento de localização e status de equipamentos em tempo real.
-📋 Descrição
+📋 Descrição </br>
 Este projeto permite:
 
 <ul>
