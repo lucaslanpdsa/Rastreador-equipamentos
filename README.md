@@ -1,4 +1,5 @@
-## Aplicação web para monitoramento de localização e status de equipamentos em tempo real.
+## Rastreador-de-equipamentos
+#### Aplicação web para monitoramento de localização e status de equipamentos em tempo real.
 📋 Descrição </br>
 Este projeto permite:
 
