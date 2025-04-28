@@ -46,7 +46,7 @@ Este projeto permite:
 </ul>
 
 🔗 Link para acessar o projeto
-👉 <a href="https://teste-frontend-v4-git-teste-lucas-alves-lucaslanpdsas-projects.vercel.app/">Acesse o projeto aqui<a/>
+👉 <a target="_blank" href="https://teste-frontend-v4-git-teste-lucas-alves-lucaslanpdsas-projects.vercel.app/">Acesse o projeto aqui<a/>
 
 
 
